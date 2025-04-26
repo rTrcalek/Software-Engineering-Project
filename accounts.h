@@ -1,4 +1,5 @@
 //This header file was created by Reese Trcalek
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -17,7 +18,7 @@ class Accounts {
     Accounts();                      // Default Constructor
     ~Accounts();                     // Destructor
     void Append(string userName, string password, int accountType);
-    void login(string userName, string password);
+    bool login(string userName, string password);
     void checkOutBook(string userName, string book);
     void checkInBook(string userName, string book);
     int getAccountType(string userName);
@@ -47,6 +48,23 @@ void Accounts::Append(string userName, string password, int accountType) {  // A
     }
     current->next = newNode;
     size++;
+ };
+
+ bool Accounts::login(string userName, string password) {
+    Node* current = head;
+   for(int i = 0; i < size;i++){
+      if(current->user == userName){
+        if (current->pass == password){
+         return true;
+        }
+        else {
+            cout << "Password is incorrect" << endl;
+            return false;
+        }
+      }
+      current = current->next;
+   }
+   return false;
  };
 
  void Accounts::checkOutBook(string userName, string book) {

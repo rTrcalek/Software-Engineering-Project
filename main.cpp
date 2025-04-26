@@ -11,10 +11,20 @@ int main() {
     accounts.Append("borrow", "borrow1234", 2);
 
     //Ask user to input login
-
+    bool loginCorrect = false;
+    string userName = "";
+    string password = "";
+    while (!loginCorrect) {
+        cout << "Input Username" << endl;
+        cin >> userName;
+        cout << "Input Password" << endl;
+        cin >> password;
+        //Checks if login is correct
+        loginCorrect = accounts.login(userName, password);
+    }
 
     //Check account type to determine what actions to give access to
-    
+    int accountType = accounts.getAccountType(userName);
     
     //UI Function Selections
 }
