@@ -1,4 +1,4 @@
-//This file was created by Reese Trcalek
+//This header file was created by Reese Trcalek
 #include <string>
 using namespace std;
 
@@ -7,7 +7,7 @@ struct Node {
     string user = "";
     string pass = "";
     int type = 0;
-    string checkedBooks[3] = {};
+    string checkedBook = "";
     Node* next = nullptr;
     Node(string u, string p, int t, Node* n = nullptr){user = u;pass = p;type = t;next = n;};
 };
@@ -17,7 +17,10 @@ class Accounts {
     Accounts();                      // Default Constructor
     ~Accounts();                     // Destructor
     void Append(string userName, string password, int accountType);
-
+    void login(string userName, string password);
+    void checkOutBook(string userName, string book);
+    void checkInBook(string userName, string book);
+    int getAccountType(string userName);
 
     private:
     Node* head;                        // Items are linked to the head
@@ -44,4 +47,35 @@ void Accounts::Append(string userName, string password, int accountType) {  // A
     }
     current->next = newNode;
     size++;
+ };
+
+ void Accounts::checkOutBook(string userName, string book) {
+    Node* current = head;
+    for(int i = 0; i < size;i++){
+      if(current->user == userName){
+         current->checkedBook = book;
+      }
+      current = current->next;
+   }
+ };
+
+ void Accounts::checkInBook(string userName, string book) {
+    Node* current = head;
+    for(int i = 0; i < size;i++){
+      if(current->user == userName){
+         current->checkedBook = "";
+      }
+      current = current->next;
+   }
+ };
+
+ int Accounts::getAccountType(string userName) {
+    Node* current = head;
+    for(int i = 0; i < size;i++){
+      if(current->user == userName){
+         return current->type;
+      }
+      current = current->next;
+   }
+   return -1;
  };
