@@ -1,8 +1,17 @@
 #include "accounts.h"
+#include "inventory.h"
 using namespace std;
 
 int main() {
     //Reese Trcalek
+
+    //Creates a Linked List to store the inventory
+    Inventory inventory;
+    //Adds some example books to the list
+    inventory.Append("Divine Comedy", "Dante Alighieri");
+    inventory.Append("Don Quixote", "Miguel de Cervantes");
+    inventory.Append("Paradise Lost", "John Milton");
+    
     //Creates a Linked List to store the accounts
     Accounts accounts;
     //Adds some example accounts to the list
