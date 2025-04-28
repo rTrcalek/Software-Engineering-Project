@@ -35,7 +35,7 @@ int main() {
     //Check account type to determine what actions to give access to
     int accountType = accounts.getAccountType(userName);
 
-    if (accountType == 0) // Librarian Account Function
+    if (accountType == 0) // Librarian Account Function: Written by Bryan Martinez
 {
     int choice = 0;
     while (choice != 5) 
