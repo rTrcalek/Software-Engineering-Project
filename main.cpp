@@ -36,7 +36,7 @@ int main() {
     int accountType = accounts.getAccountType(userName);
 
     if (accountType == 0) // Librarian Account Function: Written by Bryan Martinez
-{
+    {
     int choice = 0;
     while (choice != 5) 
     {
@@ -94,8 +94,33 @@ int main() {
         else 
        {
             cout << "Book not found." << endl;
+        }    
+    }
+}
+        //UI Function Selections
+    }
+    else if (accountType == 1) // Bookseller Account
+{
+    int choice = 0;
+    while (choice != 2)
+    {
+        cout << "Bookseller Menu:" << endl;
+        cout << "1. Recommend Book to Inventory" << endl;
+        cout << "2. Logout" << endl;
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1)
+        {
+            string title, author;
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            inventory.Append(title, author);
+            cout << "Book added by bookseller!" << endl;
         }
     }
 }
-    //UI Function Selections
 }
