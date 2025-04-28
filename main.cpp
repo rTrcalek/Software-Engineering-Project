@@ -99,7 +99,7 @@ int main() {
 }
         //UI Function Selections
     }
-    else if (accountType == 1) // Bookseller Account
+    else if (accountType == 1) // Bookseller Account Function: Written by Ronaldo Covarrubias
 {
     int choice = 0;
     while (choice != 2)
