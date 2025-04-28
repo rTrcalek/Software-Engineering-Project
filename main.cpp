@@ -101,7 +101,7 @@ int main() {
         }    
     }
 }
-
+    }
 
 if(accountType == 1) {
     int borrowerChoice = 0;
@@ -158,6 +158,8 @@ if(accountType == 1) {
 
         }
     }
+}
+}
     else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
 {
     int choice = 0;
@@ -189,4 +191,4 @@ if(accountType == 1) {
 
 };
     //UI Function Selections
-}
+
