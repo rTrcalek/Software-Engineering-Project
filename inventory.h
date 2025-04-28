@@ -29,7 +29,7 @@ class Inventory {
     public:
     Inventory();                      // Default Constructor
     ~Inventory();                     // Destructor
-    void Append(string t, string a);
+    void Append(string t, string a, string g, string i);
     void changeStatus(string t);
     bool getStatus(string t);
     bool foundBook(string t);
@@ -50,8 +50,12 @@ Inventory::Inventory() {
     size=0;
 };
 
-void Inventory::Append(string t, string a) {  // Add a value to the end of the list
-    Book* newNode= new Book(t, a);
+Inventory::~Inventory() {
+
+};
+
+void Inventory::Append(string t, string a, string g, string i) {  // Add a value to the end of the list
+    Book* newNode= new Book(t, a, g, i);
     if(head == nullptr){
        head = newNode;
        size++;
@@ -79,7 +83,7 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
       }
       current = current->next;
    }
- };
+};
 
  //returns the current checked out status of a book
  bool Inventory::getStatus(string t) {
@@ -90,6 +94,7 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
       }
       current = current->next;
    }
+   return true;
  };
 
  bool Inventory::foundBook(string t) {
@@ -124,8 +129,8 @@ bool Inventory::editTitle(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 };
 
 // function for editing author
@@ -137,8 +142,8 @@ bool Inventory::editAuthor(string t) {
        return true;
     }
     current = current->next;
-    return false;
  }
+ return false;
 }
 
 // function for editing genre
@@ -150,8 +155,8 @@ bool Inventory::editGenre(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 }
 
 // function for editing ISBN
@@ -163,6 +168,6 @@ bool Inventory::editISBN(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 }
