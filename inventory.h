@@ -8,7 +8,6 @@ struct Book {
    string title = "";
    string author = "";
    string genre = "";
-   string description = "";
    int isbn;
    bool checkedOutStatus = false;
    bool ifRecommend = false;
@@ -27,6 +26,10 @@ class Inventory {
     bool getStatus(string t);
     bool foundBook(string t);
     void displayInfo();
+    bool editTitle(string t);
+    bool editAuthor(string t);
+    bool editGenre(string t);
+    bool editISBN(string t);
 
     private:
     Book* head;                        // Items are linked to the head
@@ -98,8 +101,58 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
    cout << "Book: " << current->title << "\n"
       << "Author: " << current->author << "\n"
       << "Genre: " << current->genre << "\n"
-      << "ISBN: " << current->isbn << "\n"
-      << "Description: " << current->description << "\n";
+      << "ISBN: " << current->isbn << "\n";
       current = current->next;
+   }
+};
+
+bool Inventory::editTitle(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->title;
+         return true;
+      }
+      current = current->next;
+      return false;
+   }
+};
+
+// function for editing author
+bool Inventory::editAuthor(string t) {
+   Book* current = head;
+   for(int i = 0; i < size;i++){
+    if(current->title == t){
+       cin >> current->author;
+       return true;
+    }
+    current = current->next;
+    return false;
+ }
+}
+
+// function for editing genre
+bool Inventory::editGenre(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->genre;
+         return true;
+      }
+      current = current->next;
+      return false;
+   }
+}
+
+// function for editing ISBN
+bool Inventory::editISBN(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->isbn;
+         return true;
+      }
+      current = current->next;
+      return false;
    }
 }
