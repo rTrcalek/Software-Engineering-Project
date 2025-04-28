@@ -5,22 +5,39 @@ using namespace std;
 
 //Node that will store book data
 struct Book {
-    string title = "";
-    string author = "";
-    bool checkedOutStatus = false;
-    string waitlist[5] = {};
-    Book* next = nullptr;
-    Book(string t, string a, bool status = false, Book* n = nullptr){title = t;author = a;checkedOutStatus = status;next = n;};
+   string title = "";
+   string author = "";
+   string genre = "";
+   string description = "";
+   string isbn = "";
+   bool checkedOutStatus = false;
+   bool ifRecommend = false;
+   bool ifOverdue = false;
+   string waitlist[5] = {};
+   Book* next = nullptr;
+   Book(string title, string author, string genre, string isbn, bool status = false, Book* n = nullptr){
+      this->title = title;
+      this->author = author;
+      this->genre = genre;
+      this->isbn = isbn;
+      checkedOutStatus = status;
+      next = n;
+   };
 };
 
 class Inventory {
     public:
     Inventory();                      // Default Constructor
     ~Inventory();                     // Destructor
-    void Append(string t, string a);
+    void Append(string t, string a, string g, string i);
     void changeStatus(string t);
     bool getStatus(string t);
     bool foundBook(string t);
+    void displayInfo(string a);
+    bool editTitle(string t);
+    bool editAuthor(string t);
+    bool editGenre(string t);
+    bool editISBN(string t);
 
     private:
     Book* head;                        // Items are linked to the head
@@ -33,8 +50,12 @@ Inventory::Inventory() {
     size=0;
 };
 
-void Inventory::Append(string t, string a) {  // Add a value to the end of the list
-    Book* newNode= new Book(t, a);
+Inventory::~Inventory() {
+
+};
+
+void Inventory::Append(string t, string a, string g, string i) {  // Add a value to the end of the list
+    Book* newNode= new Book(t, a, g, i);
     if(head == nullptr){
        head = newNode;
        size++;
@@ -62,7 +83,7 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
       }
       current = current->next;
    }
- };
+};
 
  //returns the current checked out status of a book
  bool Inventory::getStatus(string t) {
@@ -73,6 +94,7 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
       }
       current = current->next;
    }
+   return true;
  };
 
  bool Inventory::foundBook(string t) {
@@ -85,3 +107,67 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
    }
    return false;
  };
+
+ void Inventory::displayInfo(string a) {
+   Book* current = head;
+   for(int i = 0; i < size;i++){
+      if (current->title == a){
+         cout << "Book: " << current->title << "\n"
+      << "Author: " << current->author << "\n"
+      << "Genre: " << current->genre << "\n"
+      << "ISBN: " << current->isbn << "\n";
+      }
+      current = current->next;
+   }
+};
+
+bool Inventory::editTitle(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->title;
+         return true;
+      }
+      current = current->next;
+   }
+   return false;
+};
+
+// function for editing author
+bool Inventory::editAuthor(string t) {
+   Book* current = head;
+   for(int i = 0; i < size;i++){
+    if(current->title == t){
+       cin >> current->author;
+       return true;
+    }
+    current = current->next;
+ }
+ return false;
+}
+
+// function for editing genre
+bool Inventory::editGenre(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->genre;
+         return true;
+      }
+      current = current->next;
+   }
+   return false;
+}
+
+// function for editing ISBN
+bool Inventory::editISBN(string t) {
+   Book* current = head;
+     for(int i = 0; i < size;i++){
+      if(current->title == t){
+         cin >> current->isbn;
+         return true;
+      }
+      current = current->next;
+   }
+   return false;
+}
