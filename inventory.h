@@ -5,12 +5,17 @@ using namespace std;
 
 //Node that will store book data
 struct Book {
-    string title = "";
-    string author = "";
-    bool checkedOutStatus = false;
-    string waitlist[5] = {};
-    Book* next = nullptr;
-    Book(string t, string a, bool status = false, Book* n = nullptr){title = t;author = a;checkedOutStatus = status;next = n;};
+   string title = "";
+   string author = "";
+   string genre = "";
+   string description = "";
+   int isbn;
+   bool checkedOutStatus = false;
+   bool ifRecommend = false;
+   bool ifOverdue = false;
+   string waitlist[5] = {};
+   Book* next = nullptr;
+   Book(string t, string a, bool status = false, Book* n = nullptr){title = t;author = a;checkedOutStatus = status;next = n;};
 };
 
 class Inventory {
@@ -90,7 +95,7 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
  void Inventory::displayInfo() {
    Book* current = head;
    for(int i = 0; i < size;i++){
-   cout << "Book: " << current->name << "\n"
+   cout << "Book: " << current->title << "\n"
       << "Author: " << current->author << "\n"
       << "Genre: " << current->genre << "\n"
       << "ISBN: " << current->isbn << "\n"
