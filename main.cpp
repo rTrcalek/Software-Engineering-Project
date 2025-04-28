@@ -8,9 +8,9 @@ int main() {
     //Creates a Linked List to store the inventory
     Inventory inventory;
     //Adds some example books to the list
-    inventory.Append("Divine Comedy", "Dante Alighieri");
-    inventory.Append("Don Quixote", "Miguel de Cervantes");
-    inventory.Append("Paradise Lost", "John Milton");
+    inventory.Append("Divine Comedy", "Dante Alighieri", "Poem", "9788804781721");
+    inventory.Append("Don Quixote", "Miguel de Cervantes", "Satire", "9788420727943");
+    inventory.Append("Paradise Lost", "John Milton", "Poem", "9780023382352");
     
     //Creates a Linked List to store the accounts
     Accounts accounts;
@@ -98,4 +98,5 @@ int main() {
     }
 }
     //UI Function Selections
+}
 }
