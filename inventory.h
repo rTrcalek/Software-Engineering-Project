@@ -9,7 +9,7 @@ struct Book {
    string author = "";
    string genre = "";
    string description = "";
-   int isbn;
+   string isbn = "";
    bool checkedOutStatus = false;
    bool ifRecommend = false;
    bool ifOverdue = false;
