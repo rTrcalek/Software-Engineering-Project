@@ -158,6 +158,31 @@ if(accountType == 1) {
 
         }
     }
+    else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
+{
+    int choice = 0;
+    while (choice != 2)
+    {
+        cout << "Bookseller Menu:" << endl;
+        cout << "1. Add Book to Inventory" << endl;
+        cout << "2. Logout" << endl;
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1)
+        {
+            string title, author;
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            inventory.Append(title, author);
+            cout << "Book added by bookseller!" << endl;
+        }
+    }
+}
+
 };
     //UI Function Selections
 }
