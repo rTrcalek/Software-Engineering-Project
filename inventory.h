@@ -15,7 +15,14 @@ struct Book {
    bool ifOverdue = false;
    string waitlist[5] = {};
    Book* next = nullptr;
-   Book(string t, string a, bool status = false, Book* n = nullptr){title = t;author = a;checkedOutStatus = status;next = n;};
+   Book(string title, string author, string genre, string isbn, bool status = false, Book* n = nullptr){
+      this->title = title;
+      this->author = author;
+      this->genre = genre;
+      this->isbn = isbn;
+      checkedOutStatus = status;
+      next = n;
+   };
 };
 
 class Inventory {
