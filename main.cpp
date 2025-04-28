@@ -171,13 +171,17 @@ if(accountType == 1) {
 
         if (choice == 1)
         {
-            string title, author;
+            string title, author, genre, isbn;
             cout << "Enter Book Title: ";
             cin.ignore();
             getline(cin, title);
+            cout << "Enter Book Genre: ";
+            getline(cin, genre);
+            cout << "Enter Book ISBN: ";
+            getline(cin, isbn);
             cout << "Enter Book Author: ";
             getline(cin, author);
-            inventory.Append(title, author);
+            inventory.Append(title, author, genre, isbn);
             cout << "Book added by bookseller!" << endl;
         }
     }
