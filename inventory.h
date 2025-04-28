@@ -29,7 +29,7 @@ class Inventory {
     public:
     Inventory();                      // Default Constructor
     ~Inventory();                     // Destructor
-    void Append(string t, string a);
+    void Append(string t, string a, string g, string i);
     void changeStatus(string t);
     bool getStatus(string t);
     bool foundBook(string t);
@@ -50,8 +50,8 @@ Inventory::Inventory() {
     size=0;
 };
 
-void Inventory::Append(string t, string a) {  // Add a value to the end of the list
-    Book* newNode= new Book(t, a);
+void Inventory::Append(string t, string a, string g, string i) {  // Add a value to the end of the list
+    Book* newNode= new Book(t, a, g, i);
     if(head == nullptr){
        head = newNode;
        size++;
