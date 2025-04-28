@@ -34,6 +34,7 @@ class Inventory {
     bool getStatus(string t);
     bool foundBook(string t);
     void displayInfo();
+    void displayTitle();
 
     private:
     Book* head;                        // Items are linked to the head
@@ -109,4 +110,12 @@ void Inventory::Append(string t, string a) {  // Add a value to the end of the l
       << "Description: " << current->description << "\n";
       current = current->next;
    }
+}
+
+void Inventory::displayTitle() {
+   Book* current = head;
+   for(int i = 0; i < size;i++){
+      cout << "Book: " << current->title << "\n";
+         current = current->next;
+      }
 }
