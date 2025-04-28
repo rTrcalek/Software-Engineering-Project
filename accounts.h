@@ -34,6 +34,10 @@ Accounts::Accounts() {
     size=0;
 };
 
+Accounts::~Accounts() {
+
+};
+
 //Creates an account and adds them to the linked list
 void Accounts::Append(string userName, string password, int accountType) {  // Add a value to the end of the list
     Node* newNode= new Node(userName, password, accountType);

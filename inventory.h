@@ -50,6 +50,10 @@ Inventory::Inventory() {
     size=0;
 };
 
+Inventory::~Inventory() {
+
+};
+
 void Inventory::Append(string t, string a, string g, string i) {  // Add a value to the end of the list
     Book* newNode= new Book(t, a, g, i);
     if(head == nullptr){
@@ -79,7 +83,7 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
       }
       current = current->next;
    }
- };
+};
 
  //returns the current checked out status of a book
  bool Inventory::getStatus(string t) {
@@ -90,6 +94,7 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
       }
       current = current->next;
    }
+   return true;
  };
 
  bool Inventory::foundBook(string t) {
@@ -122,8 +127,8 @@ bool Inventory::editTitle(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 };
 
 // function for editing author
@@ -135,8 +140,8 @@ bool Inventory::editAuthor(string t) {
        return true;
     }
     current = current->next;
-    return false;
  }
+ return false;
 }
 
 // function for editing genre
@@ -148,8 +153,8 @@ bool Inventory::editGenre(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 }
 
 // function for editing ISBN
@@ -161,6 +166,6 @@ bool Inventory::editISBN(string t) {
          return true;
       }
       current = current->next;
-      return false;
    }
+   return false;
 }
