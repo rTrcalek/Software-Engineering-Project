@@ -91,11 +91,69 @@ int main() {
             cout << "Book checked in!" << endl;
         }
 
-        else 
+        else
        {
             cout << "Book not found." << endl;
         }
     }
 }
+
+
+if(accountType == 1) {
+    int borrowerChoice = 0;
+    
+    while (borrowerChoice != 4) {
+        cout << "\n        Borrower Menu         \n";
+        cout << "1. Borrow a book" << endl;
+        cout << "2. return a book" << endl;
+        cout << "3. View Borrowed Book" << endl;
+        cout << "4. Logout" << endl;
+        cout << "\nEnter your choice: ";
+        cin >> borrowerChoice;
+
+
+        string bookName;
+        if (borrowerChoice == 1) {
+            cout << "Enter book you are borrowing: " << endl;
+            cin.ignore();
+            getline(cin, bookName);
+
+            if (inventory.foundBook(bookName)) { //finds book availability
+                    accounts.checkOutBook(userName, bookName); //book saved to borrowers' account
+                    cout << "Book is borrowed" << endl;
+                }
+            else {
+                    cout << "Book isn't found" << endl;
+                }
+
+            }
+
+        else if (borrowerChoice == 2) {
+                cout << "Returning book..." << endl;
+                string recentBook = accounts.checkInBook(userName);
+
+                if (recentBook != "") {
+                    inventory.foundBook(userName, recentBook);
+                    accounts.checkInBook();
+                    cout << "Book returned"<< endl;
+                }
+        }
+        else if (borrowerChoice == 3) {
+                cout << "Checked out book: : \n";
+                string recentBook = accounts.checkOutBook(userName);
+
+                if (recentBook != "") {
+                    cout << "Book borrowed: " << recentBook << endl;
+                else {
+                cout << "No books borrowed" << endl;
+                }
+
+        }
+        else if (borrowerChoice != 4) {
+            cout << "Error, Try again";
+
+        }
+    }
+};
     //UI Function Selections
 }
