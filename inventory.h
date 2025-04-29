@@ -1,4 +1,3 @@
-//Header File was created by Reese Trcalek
 #include <iostream>
 #include <string>
 using namespace std;
@@ -26,7 +25,7 @@ struct Book {
    };
 };
 
-//class for managing inventory
+//class for managing inventory and the functions were done by Reese Trcalek & Teodoro Padron
 class Inventory {
     public:
     Inventory();                      // Default Constructor
