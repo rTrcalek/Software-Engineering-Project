@@ -37,17 +37,18 @@ int main() {
 
     if (accountType == 0) // Librarian Account Function: Written by Bryan Martinez
     {
-        int choice = 0;
-        while (choice != 5) 
-        {
-            cout << "Librarian Menu:" << endl;
-            cout << "1. Add Book" << endl;
-            cout << "2. Check Out Book" << endl;
-            cout << "3. Check In Book" << endl;
-            cout << "4. View Inventory" << endl;
-            cout << "5. Logout" << endl;
-            cin >> choice;
-            cin.ignore();
+            int choice = 0;
+
+    while (choice != 5) 
+    {
+        cout << "Librarian Menu:" << endl;
+        cout << "1. Add Book" << endl;
+        cout << "2. Check Out Book" << endl;
+        cout << "3. Check In Book" << endl;
+        cout << "4. View Inventory" << endl;
+        cout << "5. Logout" << endl;
+        cin >> choice;
+        cin.ignore();
 
         if (choice == 1) 
         {
@@ -100,15 +101,15 @@ int main() {
                 cout << "Book not found." << endl;
             }    
         }
-    }    
-    else if (choice == 4)
-    {
-        inventory.displayInventory();
-    }
-    else if (choice == 5)
-    {
-        cout << "Logging out of Account." << endl;
-    }
+
+        else if (choice == 4)
+        {
+            inventory.displayInventory();
+        }
+        else if (choice == 5)
+        {
+            cout << "Logging out of Account." << endl;
+        }
 
     }    
 }
