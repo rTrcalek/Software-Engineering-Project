@@ -128,7 +128,7 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
    }
 };
 
-//function for editing title
+//function for displaying inventory
 void Inventory::displayInventory() {
    Book* current = head;
    for(int i = 0; i < size;i++){
@@ -140,6 +140,7 @@ void Inventory::displayInventory() {
       }
 };
 
+//function for editing title
 bool Inventory::editTitle(string t) {
    Book* current = head;
      for(int i = 0; i < size;i++){
