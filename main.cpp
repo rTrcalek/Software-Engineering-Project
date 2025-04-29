@@ -114,12 +114,13 @@ int main() {
     }    
 }
 
-
-if(accountType == 1) {
+//Borrower Account Function - Karina Sosa
+if(accountType == 1) {     // If account type is Borrower, Borrower menu is shown
     int borrowerChoice = 0;
-    string bookBorrowed;
+    string bookBorrowed; //tracks borrowed book
     
     while (borrowerChoice != 4) {
+        //displays borrower option
         cout << "\n        Borrower Menu         \n";
         cout << "1. Borrow a book" << endl;
         cout << "2. return a book" << endl;
@@ -129,33 +130,33 @@ if(accountType == 1) {
         cin >> borrowerChoice;
 
 
-       
+       //if borrower choses to borrow a book
         if (borrowerChoice == 1) {
             cout << "Enter book you are borrowing: " << endl;
             cin.ignore();
             string bookName;
             getline(cin, bookName);
 
-            if(inventory.foundBook(bookName)) { //finds book
-                inventory.changeStatus(bookName);
+            if(inventory.foundBook(bookName)) { //Checks if book exists 
+                inventory.changeStatus(bookName); //changes book to borrowed
                 accounts.checkOutBook(userName, bookName);
-                bookBorrowed = bookName;
+                bookBorrowed = bookName;   //stores borrowed book name
                 cout <<bookName<< " is borrowed" << endl;
             }
             else {
                 cout <<"Book not found"<<endl;
             }
         }
-        
+        //If borrower choses to return a book
         else if (borrowerChoice == 2) {
             cout << "Enter book returning: "<<endl;
             cin.ignore();
             string bookName;
             getline(cin, bookName);
 
-           if(inventory.foundBook(bookName)){
+           if(inventory.foundBook(bookName)){ //checks if book exists
             inventory.changeStatus(bookName);
-            accounts.checkInBook(userName, bookName);
+            accounts.checkInBook(userName, bookName);//updates 
             bookBorrowed = "";
             cout <<"Book is returned"<<endl;  
         }
@@ -164,7 +165,7 @@ if(accountType == 1) {
           }
         
      }
-
+    //If borrower choses to view borrowed book
         else if (borrowerChoice == 3) {
                 cout << "Checking books borrowed... \n";
                 if (bookBorrowed != "") {
@@ -175,8 +176,13 @@ if(accountType == 1) {
                 }
 
         }
-        else if (borrowerChoice != 4) {
-            cout << "Error, Try again";
+    //If choice is logout, it logs out
+        else if (borrowerChoice == 4) {
+            cout << "Logging out...\n";
+        }
+        else{
+            cout << "Error, Try again\n";
+        }
 
         }
     }
