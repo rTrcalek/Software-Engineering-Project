@@ -187,7 +187,6 @@ if(accountType == 1) {     // If account type is Borrower, Borrower menu is show
         }
     }
 
-}
 
 else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
 {
