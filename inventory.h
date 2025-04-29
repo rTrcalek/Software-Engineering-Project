@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+//Struck written by Reese Trcalek & Teodoro Padron
 //Node that will store book data
 struct Book {
    string title = "";
@@ -25,6 +26,7 @@ struct Book {
    };
 };
 
+//class for managing inventory
 class Inventory {
     public:
     Inventory();                      // Default Constructor
@@ -98,6 +100,7 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
    return true;
  };
 
+ //function for finding book in inventory
  bool Inventory::foundBook(string t) {
     Book* current = head;
      for(int i = 0; i < size;i++){
@@ -109,6 +112,9 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
    return false;
  };
 
+ //displayInfo written by Teodoro Padron
+
+ //function for displaying book information
  void Inventory::displayInfo(string a) {
    Book* current = head;
    for(int i = 0; i < size;i++){
@@ -122,6 +128,7 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
    }
 };
 
+//function for displaying inventory
 void Inventory::displayInventory() {
    Book* current = head;
    for(int i = 0; i < size;i++){
@@ -133,6 +140,7 @@ void Inventory::displayInventory() {
       }
 };
 
+//function for editing title
 bool Inventory::editTitle(string t) {
    Book* current = head;
      for(int i = 0; i < size;i++){
