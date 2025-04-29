@@ -186,12 +186,13 @@ if(accountType == 1) {
 else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
 {
     int choice = 0;
-    while (choice != 2)
+    while (choice != 3)
     {
         // Display Menu for Bookseller
         cout << "Bookseller Menu:" << endl;
         cout << "1. Add Book to Inventory" << endl;
-        cout << "2. Logout" << endl;
+        cout << "2. View Inventory by Title" << endl;
+        cout << "3. Logout" << endl;
         cin >> choice;
         cin.ignore();
         
@@ -214,6 +215,24 @@ else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Co
             getline(cin, isbn);
             inventory.Append(title, author, genre, isbn);
             cout << "Book added by bookseller!" << endl;
+        }
+
+        //Option 2: View Inventory by Title
+        else if (choice == 2)
+        {
+            string title;
+            cout << "Enter Book Title to Search: ";
+            getline(cin, title);
+            
+            //Check if book is in inventory
+            if (inventory.foundBook(title))
+            {
+                cout << "✅ Book found: " << title << endl;
+            }
+            else
+            {
+                cout << "❌ Book not found." << endl;
+            }
         }
     }
 }
