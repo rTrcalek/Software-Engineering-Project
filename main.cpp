@@ -16,8 +16,8 @@ int main() {
     Accounts accounts;
     //Adds some example accounts to the list
     accounts.Append("lib", "lib1234", 0);
-    accounts.Append("booksell", "sell1234", 1);
-    accounts.Append("borrow", "borrow1234", 2);
+    accounts.Append("booksell", "sell1234", 2);
+    accounts.Append("borrow", "borrow1234", 1);
 
     //Ask user to input login
     bool loginCorrect = false;
