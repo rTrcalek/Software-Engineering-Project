@@ -180,6 +180,42 @@ if(accountType == 1) {
 
         }
     }
-};
-    //UI Function Selections
+
+}
+
+else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
+{
+    int choice = 0;
+    while (choice != 2)
+    {
+        // Display Menu for Bookseller
+        cout << "Bookseller Menu:" << endl;
+        cout << "1. Add Book to Inventory" << endl;
+        cout << "2. Logout" << endl;
+        cin >> choice;
+        cin.ignore();
+        
+        //Option 1: Add Book to Inventory
+        if (choice == 1)
+        {
+            string title, author, genre, isbn;
+            //Title
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            //Author
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            //Genre
+            cout << "Enter Book Genre: ";
+            getline(cin, genre);
+            //ISBN
+            cout << "Enter Book ISBN: ";
+            getline(cin, isbn);
+            inventory.Append(title, author, genre, isbn);
+            cout << "Book added by bookseller!" << endl;
+        }
     }
+}
+};
+    //UI Function Selection

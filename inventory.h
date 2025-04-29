@@ -36,6 +36,7 @@ class Inventory {
     bool getStatus(string t);
     bool foundBook(string t);
     void displayInfo(string a);
+    void displayInventory();
     bool editTitle(string t);
     bool editAuthor(string t);
     bool editGenre(string t);
@@ -128,6 +129,17 @@ void Inventory::Append(string t, string a, string g, string i) {  // Add a value
 };
 
 //function for editing title
+void Inventory::displayInventory() {
+   Book* current = head;
+   for(int i = 0; i < size;i++){
+      cout << "Book: " << current->title << "\n"
+      << "Author: " << current->author << "\n"
+      << "Genre: " << current->genre << "\n"
+      << "ISBN: " << current->isbn << "\n";
+      current = current->next;
+      }
+};
+
 bool Inventory::editTitle(string t) {
    Book* current = head;
      for(int i = 0; i < size;i++){
