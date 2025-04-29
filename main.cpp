@@ -16,8 +16,8 @@ int main() {
     Accounts accounts;
     //Adds some example accounts to the list
     accounts.Append("lib", "lib1234", 0);
-    accounts.Append("booksell", "sell1234", 1);
-    accounts.Append("borrow", "borrow1234", 2);
+    accounts.Append("booksell", "sell1234", 2);
+    accounts.Append("borrow", "borrow1234", 1);
 
     //Ask user to input login
     bool loginCorrect = false;
@@ -37,7 +37,8 @@ int main() {
 
     if (accountType == 0) // Librarian Account Function: Written by Bryan Martinez
     {
-    int choice = 0;
+            int choice = 0;
+
     while (choice != 5) 
     {
         cout << "Librarian Menu:" << endl;
@@ -49,57 +50,68 @@ int main() {
         cin >> choice;
         cin.ignore();
 
-    if (choice == 1) 
-    {
-        string title, author, genre, isbn;
-        cout << "Enter Book Title: ";
-        cin.ignore();
-        getline(cin, title);
-        cout << "Enter Book Author: ";
-        getline(cin, author);
-        cout << "Enter Book Genre: ";
-        getline(cin, genre);
-        cout << "Enter Book ISBN: ";
-        getline(cin, isbn);
-        inventory.Append(title, author, genre, isbn);
-        cout << "Book added!" << endl;
-    }
-    else if (choice == 2) 
-    {
-        string title;
-        cout << "Enter Book Title to Check Out: ";
-        cin.ignore();
-        getline(cin, title);
+        if (choice == 1) 
+        {
+            string title, author, genre, isbn;
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            cout << "Enter Book Genre: ";
+            getline(cin, genre);
+            cout << "Enter Book ISBN: ";
+            getline(cin, isbn);
+            inventory.Append(title, author, genre, isbn);
+            cout << "Book added!" << endl;
+        }
+        else if (choice == 2) 
+        {
+            string title;
+            cout << "Enter Book Title to Check Out: ";
+            cin.ignore();
+            getline(cin, title);
         
-        if (inventory.foundBook(title)) 
-        {
-            inventory.changeStatus(title);
-            cout << "Book checked out!" << endl;
-        }
+            if (inventory.foundBook(title)) 
+            {
+                inventory.changeStatus(title);
+                cout << "Book checked out!" << endl;
+            }
 
-        else 
-        {
-            cout << "Book not found." << endl;
-        }
-    }
-    else if (choice == 3) 
-    {
-        string title;
-        cout << "Enter Book Title to Check In: ";
-        cin.ignore();
-       getline(cin, title);
-       
-       if (inventory.foundBook(title)) 
-       {
-            inventory.changeStatus(title);
-            cout << "Book checked in!" << endl;
-        }
-
-        else
-       {
-            cout << "Book not found." << endl;
+            else 
+            {
+                cout << "Book not found." << endl;
+            }
         }    
-    }
+
+        else if (choice == 3) 
+        {
+            string title;
+            cout << "Enter Book Title to Check In: ";
+            cin.ignore();
+            getline(cin, title);
+       
+            if (inventory.foundBook(title)) 
+            {
+                inventory.changeStatus(title);
+                cout << "Book checked in!" << endl;
+            }
+            else
+            {
+                cout << "Book not found." << endl;
+            }    
+        }
+
+        else if (choice == 4)
+        {
+            inventory.displayInventory();
+        }
+        else if (choice == 5)
+        {
+            cout << "Logging out of Account." << endl;
+        }
+
+    }    
 }
 
 //Borrower Account Function - Karina Sosa
@@ -174,6 +186,42 @@ if(accountType == 1) {     // If account type is Borrower, Borrower menu is show
 
         }
     }
-};
-    //UI Function Selections
+
+}
+
+else if (accountType == 2) // Bookseller Account Function: Written by Ronaldo Covarrubias
+{
+    int choice = 0;
+    while (choice != 2)
+    {
+        // Display Menu for Bookseller
+        cout << "Bookseller Menu:" << endl;
+        cout << "1. Add Book to Inventory" << endl;
+        cout << "2. Logout" << endl;
+        cin >> choice;
+        cin.ignore();
+        
+        //Option 1: Add Book to Inventory
+        if (choice == 1)
+        {
+            string title, author, genre, isbn;
+            //Title
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            //Author
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            //Genre
+            cout << "Enter Book Genre: ";
+            getline(cin, genre);
+            //ISBN
+            cout << "Enter Book ISBN: ";
+            getline(cin, isbn);
+            inventory.Append(title, author, genre, isbn);
+            cout << "Book added by bookseller!" << endl;
+        }
     }
+}
+};
+    //UI Function Selection
