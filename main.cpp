@@ -37,69 +37,80 @@ int main() {
 
     if (accountType == 0) // Librarian Account Function: Written by Bryan Martinez
     {
-    int choice = 0;
-    while (choice != 5) 
-    {
-        cout << "Librarian Menu:" << endl;
-        cout << "1. Add Book" << endl;
-        cout << "2. Check Out Book" << endl;
-        cout << "3. Check In Book" << endl;
-        cout << "4. View Inventory" << endl;
-        cout << "5. Logout" << endl;
-        cin >> choice;
-        cin.ignore();
+        int choice = 0;
+        while (choice != 5) 
+        {
+            cout << "Librarian Menu:" << endl;
+            cout << "1. Add Book" << endl;
+            cout << "2. Check Out Book" << endl;
+            cout << "3. Check In Book" << endl;
+            cout << "4. View Inventory" << endl;
+            cout << "5. Logout" << endl;
+            cin >> choice;
+            cin.ignore();
 
-    if (choice == 1) 
-    {
-        string title, author, genre, isbn;
-        cout << "Enter Book Title: ";
-        cin.ignore();
-        getline(cin, title);
-        cout << "Enter Book Author: ";
-        getline(cin, author);
-        cout << "Enter Book Genre: ";
-        getline(cin, genre);
-        cout << "Enter Book ISBN: ";
-        getline(cin, isbn);
-        inventory.Append(title, author, genre, isbn);
-        cout << "Book added!" << endl;
-    }
-    else if (choice == 2) 
-    {
-        string title;
-        cout << "Enter Book Title to Check Out: ";
-        cin.ignore();
-        getline(cin, title);
+        if (choice == 1) 
+        {
+            string title, author, genre, isbn;
+            cout << "Enter Book Title: ";
+            cin.ignore();
+            getline(cin, title);
+            cout << "Enter Book Author: ";
+            getline(cin, author);
+            cout << "Enter Book Genre: ";
+            getline(cin, genre);
+            cout << "Enter Book ISBN: ";
+            getline(cin, isbn);
+            inventory.Append(title, author, genre, isbn);
+            cout << "Book added!" << endl;
+        }
+        else if (choice == 2) 
+        {
+            string title;
+            cout << "Enter Book Title to Check Out: ";
+            cin.ignore();
+            getline(cin, title);
         
-        if (inventory.foundBook(title)) 
-        {
-            inventory.changeStatus(title);
-            cout << "Book checked out!" << endl;
-        }
+            if (inventory.foundBook(title)) 
+            {
+                inventory.changeStatus(title);
+                cout << "Book checked out!" << endl;
+            }
 
-        else 
-        {
-            cout << "Book not found." << endl;
-        }
-    }
-    else if (choice == 3) 
-    {
-        string title;
-        cout << "Enter Book Title to Check In: ";
-        cin.ignore();
-       getline(cin, title);
-       
-       if (inventory.foundBook(title)) 
-       {
-            inventory.changeStatus(title);
-            cout << "Book checked in!" << endl;
-        }
-
-        else
-       {
-            cout << "Book not found." << endl;
+            else 
+            {
+                cout << "Book not found." << endl;
+            }
         }    
+
+        else if (choice == 3) 
+        {
+            string title;
+            cout << "Enter Book Title to Check In: ";
+            cin.ignore();
+            getline(cin, title);
+       
+            if (inventory.foundBook(title)) 
+            {
+                inventory.changeStatus(title);
+                cout << "Book checked in!" << endl;
+            }
+            else
+            {
+                cout << "Book not found." << endl;
+            }    
+        }
+    }    
+    else if (choice == 4)
+    {
+        inventory.displayInventory();
     }
+    else if (choice == 5)
+    {
+        cout << "Logging out of Account." << endl;
+    }
+
+    }    
 }
 
 
