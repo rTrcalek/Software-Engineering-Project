@@ -105,6 +105,7 @@ int main() {
 
 if(accountType == 1) {
     int borrowerChoice = 0;
+    string bookBorrowed;
     
     while (borrowerChoice != 4) {
         cout << "\n        Borrower Menu         \n";
@@ -116,38 +117,47 @@ if(accountType == 1) {
         cin >> borrowerChoice;
 
 
-        string bookName;
+       
         if (borrowerChoice == 1) {
             cout << "Enter book you are borrowing: " << endl;
             cin.ignore();
+            string bookName;
             getline(cin, bookName);
 
-            if (inventory.foundBook(bookName)) { //finds book availability
-                    accounts.checkOutBook(userName, bookName); //book saved to borrowers' account
-                    cout << "Book is borrowed" << endl;
-                }
-            else {
-                    cout << "Book isn't found" << endl;
-                }
-
+            if(inventory.foundBook(bookName)) { //finds book
+                inventory.changeStatus(bookName);
+                accounts.checkOutBook(userName, bookName);
+                bookBorrowed = bookName;
+                cout <<bookName<< " is borrowed" << endl;
             }
-
-        else if (borrowerChoice == 2) {
-                cout << "Returning book..." << endl;
-                string recentBook = accounts.checkInBook(userName);
-
-                if (recentBook != "") {
-                    inventory.foundBook(userName, recentBook);
-                    accounts.checkInBook();
-                    cout << "Book returned"<< endl;
-                }
+            else {
+                cout <<"Book not found"<<endl;
+            }
         }
-        else if (borrowerChoice == 3) {
-                cout << "Checked out book: : \n";
-                string recentBook = accounts.checkOutBook(userName);
+        
+        else if (borrowerChoice == 2) {
+            cout << "Enter book returning: "<<endl;
+            cin.ignore();
+            string bookName;
+            getline(cin, bookName);
 
-                if (recentBook != "") {
-                    cout << "Book borrowed: " << recentBook << endl;
+           if(inventory.foundBook(bookName)){
+            inventory.changeStatus(bookName);
+            accounts.checkInBook(userName, bookName);
+            bookBorrowed = "";
+            cout <<"Book is returned"<<endl;  
+        }
+           else{
+            cout <<"Book not found "<<endl;
+          }
+        
+     }
+
+        else if (borrowerChoice == 3) {
+                cout << "Checking books borrowed... \n";
+                if (bookBorrowed != "") {
+                    cout << "Book borrowed: " << bookBorrowed << endl;
+                }
                 else {
                 cout << "No books borrowed" << endl;
                 }
@@ -160,4 +170,4 @@ if(accountType == 1) {
     }
 };
     //UI Function Selections
-}
+    }
